@@ -28,7 +28,7 @@ def ask():
 
     try:
         interaction = client.interactions.create(
-            model="gemini-3.6-flash",           # or gemini-3.6-flash
+            model="gemini-3.6-flash",           
             
             system_instruction="Act like a helpful personal assistant",
             
