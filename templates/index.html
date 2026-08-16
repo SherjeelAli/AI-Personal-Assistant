@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai Personal Assistant</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1 class="main-heading">AI Personal Assistant</h1>
+    <div class="container">
+        <h3>Ask Anything</h3>
+        <form action="" id="askForm">
+            <input type="text" id="question" name="question" placeholder="Type your question here..." required>
+            <button type="submit">Ask</button>
+            <p id="processing" style="display: none;">Processing...</p>
+            <p id="answer"></p>
+        </form>
+    </div>
+    <script>
+        document.getElementById("askForm").onsubmit = async (e)=>{
+            e.preventDefault();
+            let formData = new FormData(e.target);
+            let loading = document.getElementById("processing");
+            loading.style.display = "block";
+
+            let response = await fetch("/ask", {
+                method: "POST",
+                body: formData
+            });
+
+            let data = await response.text();
+            document.getElementById("answer").innerText = data;
+            loading.style.display = "none";
+        }
+    </script>
+</body>
+</html>
