@@ -9,7 +9,7 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 
 app = Flask(__name__)
-client = genai.Client(api_key=api_key)  # <-- API key goes HERE
+client = genai.Client(api_key=api_key)  
 
 
 
